@@ -1,7 +1,7 @@
 lazy val core = project.in(file("."))
-    .settings(commonSettings)
+    .settings(commonSettings, releaseSettings)
     .settings(
-      name := "data.maybe"
+      name := "Data.Maybe"
     )
 
 val specs2V = "4.2.0"
