@@ -1,7 +1,6 @@
 package io.chrisdavenport.Data
 
 object Maybe {
-  /** Union of **/
 
   /**
     * The Maybe type encapsulates an optional value. 
