@@ -66,11 +66,11 @@ lazy val releaseSettings = {
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     scmInfo := Some(
       ScmInfo(
-        url("https://github.com/ChristopherDavenport/data.maybe"),
-        "git@github.com:ChristopherDavenport/data.maybe.git"
+        url("https://github.com/ChristopherDavenport/Data.Maybe"),
+        "git@github.com:ChristopherDavenport/Data.Maybe.git"
       )
     ),
-    homepage := Some(url("https://github.com/ChristopherDavenport/data.maybe")),
+    homepage := Some(url("https://github.com/ChristopherDavenport/Data.Maybe")),
     licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
     publishMavenStyle := true,
     pomIncludeRepository := { _ =>
