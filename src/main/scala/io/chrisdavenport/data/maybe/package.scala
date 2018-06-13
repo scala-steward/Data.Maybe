@@ -21,6 +21,12 @@ package object maybe {
   def maybeToList[A](ma: Maybe[A]): List[A] = 
     maybe[List[A], A](List.empty)(a => List(a))(ma)
 
+  def optionToMaybe[A](o: Option[A]): Maybe[A] = 
+    o.fold(Maybe.nothing[A])(Maybe.just)
+
+  def maybeToOption[A](ma: Maybe[A]): Option[A] =
+    maybe[Option[A], A](Option.empty[A])(Some(_))(ma)
+
   def fmap[A,B](f: A => B)(ma: Maybe[A]): Maybe[B] =
     maybe[Maybe[B], A](Maybe.nothing[B])(a => Maybe.just(f(a)))(ma)
 

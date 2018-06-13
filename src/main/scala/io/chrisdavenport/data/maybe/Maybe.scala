@@ -5,6 +5,8 @@ object Maybe {
   def just[A](a: A): Maybe[A] = MJust[A](a)
   def nothing[A]: Maybe[A] = MNothing
 
+  def maybeNull[A](a: A): Maybe[A] = if (a == null) MNothing else MJust(a)
+
   private final case class MJust[A](a: A) extends Maybe[A]
   private final case object MNothing extends Maybe[Nothing]
 
