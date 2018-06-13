@@ -94,4 +94,5 @@ object Maybe {
 
   def >>=[A, B](ma: Maybe[A])(f: A => Maybe[B]): Maybe[B] =
     maybe[Maybe[B], A](Maybe.nothing[B])(f)(ma)
+
 }

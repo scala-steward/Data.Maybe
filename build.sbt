@@ -1,8 +1,22 @@
-lazy val core = project.in(file("."))
+
+lazy val `data-maybe` = project.in(file("."))
+  .settings(commonSettings, skipOnPublishSettings)
+  .aggregate(core, cats)
+
+lazy val core = project.in(file("core"))
     .settings(commonSettings, releaseSettings)
     .settings(
       name := "data-maybe"
     )
+
+lazy val cats = project.in(file("cats"))
+  .settings(commonSettings, releaseSettings)
+  .settings(
+    name := "data-maybe-cats",
+    libraryDependencies ++= Seq(
+      "org.typelevel" %% "cats-core" % "1.1.0"
+    )
+  ).dependsOn(core)
 
 val specs2V = "4.2.0"
 
@@ -89,3 +103,11 @@ lazy val releaseSettings = {
     }
   )
 }
+
+lazy val skipOnPublishSettings = Seq(
+  skip in publish := true,
+  publish := (()),
+  publishLocal := (()),
+  publishArtifact := false,
+  publishTo := None
+)
