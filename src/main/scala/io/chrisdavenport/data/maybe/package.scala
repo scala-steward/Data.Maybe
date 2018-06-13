@@ -20,4 +20,10 @@ package object maybe {
   
   def maybeToList[A](ma: Maybe[A]): List[A] = 
     maybe[List[A], A](List.empty)(a => List(a))(ma)
+
+  def fmap[A,B](f: A => B)(ma: Maybe[A]): Maybe[B] =
+    maybe[Maybe[B], A](Maybe.nothing[B])(a => Maybe.just(f(a)))(ma)
+
+  def bind[A, B](f: A => Maybe[B])(ma: Maybe[A]): Maybe[B] = 
+    maybe[Maybe[B], A](Maybe.nothing[B])(f)(ma)
 }
