@@ -24,7 +24,12 @@ object Maybe {
   /** Constructors **/
   def just[A](a: A): Maybe[A] = MJust[A](a)
   def nothing[A]: Maybe[A] = MNothing
-  def nullCheck[A](a: A): Maybe[A] = if (a == null) MNothing else MJust(a)
+  def checkNull[A](a: A): Maybe[A] = if (a == null) MNothing else MJust(a)
+  def checkNonFatal[A](a: => A): Maybe[A] = {
+    import scala.util.control.NonFatal
+    try { just(a) } 
+    catch { case NonFatal(_) => nothing[A] }
+  }
 
   
   /**
