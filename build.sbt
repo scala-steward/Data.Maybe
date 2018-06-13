@@ -1,6 +1,6 @@
 
 lazy val `data-maybe` = project.in(file("."))
-  .settings(commonSettings, skipOnPublishSettings)
+  .settings(commonSettings, releaseSettings, skipOnPublishSettings)
   .aggregate(core, cats)
 
 lazy val core = project.in(file("core"))
