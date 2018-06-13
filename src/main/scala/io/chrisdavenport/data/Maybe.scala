@@ -1,4 +1,4 @@
-package io.chrisdavenport.data
+package io.chrisdavenport.Data
 
 object Maybe {
   /** Union of **/
