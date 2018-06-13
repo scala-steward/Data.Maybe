@@ -5,7 +5,7 @@ import io.chrisdavenport.Data.{Maybe => M}
 import io.chrisdavenport.Data.Maybe.Maybe
 
 object maybe {
-  implicit val catsStdInstancesForOption: Traverse[Maybe] with MonadError[Maybe, Unit] with Alternative[Maybe] with CommutativeMonad[Maybe] with CoflatMap[Maybe] =
+  implicit val catsStdInstancesForMaybe: Traverse[Maybe] with MonadError[Maybe, Unit] with Alternative[Maybe] with CommutativeMonad[Maybe] with CoflatMap[Maybe] =
     new Traverse[Maybe] 
       with MonadError[Maybe, Unit]
       with Alternative[Maybe]
