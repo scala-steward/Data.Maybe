@@ -46,13 +46,13 @@ object Maybe {
   /**
     * The isJust function returns True iff its argument is of the form MJust _.
     **/
-  def isJust[A](ma : Maybe[A]): Boolean = 
+  def isMJust[A](ma : Maybe[A]): Boolean = 
     maybe[Boolean, A](false)(_ => true)(ma)
 
   /**
     * The isNothing function returns True iff its argument is MNothing.
     **/
-  def isNothing[A](ma: Maybe[A]): Boolean =
+  def isMNothing[A](ma: Maybe[A]): Boolean =
     maybe[Boolean, A](true)(_ => false)(ma)
 
   /**
