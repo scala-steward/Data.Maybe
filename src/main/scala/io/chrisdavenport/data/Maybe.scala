@@ -93,9 +93,6 @@ object Maybe {
   def maybeToOption[A](ma: Maybe[A]): Option[A] =
     maybe[Option[A], A](Option.empty[A])(Some(_))(ma)
 
-  def fmap[A,B](f: A => B)(ma: Maybe[A]): Maybe[B] =
-    maybe[Maybe[B], A](Maybe.nothing[B])(a => Maybe.just(f(a)))(ma)
-
-  def bind[A, B](f: A => Maybe[B])(ma: Maybe[A]): Maybe[B] = 
+  def >>=[A, B](ma: Maybe[A])(f: A => Maybe[B]): Maybe[B] =
     maybe[Maybe[B], A](Maybe.nothing[B])(f)(ma)
 }
