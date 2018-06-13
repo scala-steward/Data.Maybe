@@ -26,11 +26,11 @@ object maybe {
       def flatMap[A, B](fa: Maybe[A])(f: A => Maybe[B]): Maybe[B] = M.>>=(fa)(f)
 
       def tailRecM[A, B](a: A)(f: A => Maybe[Either[A,B]]): Maybe[B] = {
-        def eMap(e: Either[A, B]): Maybe[B] = e match {
-          case Left(a) => tailRecM(a)(f)
-          case Right(b) => M.just(b)
-        }
-        M.maybe(M.nothing[B])(eMap)(f(a))
+        // Piggy-back On Options TailRecM since I hate this method.
+        M.optionToMaybe(
+          Monad[Option](cats.instances.option.catsStdInstancesForOption)
+          .tailRecM(a)(a => M.maybeToOption(f(a)))
+        )
       }
       
       // Members declared in cats.Foldable
@@ -48,6 +48,5 @@ object maybe {
       // Members declared in cats.Traverse
       def traverse[G[_], A, B](fa: Maybe[A])(f: A => G[B])(implicit evidence$1: Applicative[G]): G[Maybe[B]] = 
         M.maybe[G[Maybe[B]], A](Applicative[G].pure(M.nothing[B]))(a => Applicative[G].map(f(a))(M.just(_)))(fa)
-
     }
 }
