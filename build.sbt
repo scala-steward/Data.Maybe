@@ -18,7 +18,7 @@ lazy val cats = project.in(file("cats"))
     )
   ).dependsOn(core)
 
-val specs2V = "4.3.6"
+val specs2V = "4.4.0"
 
 lazy val contributors = Seq(
   "ChristopherDavenport" -> "Christopher Davenport"
