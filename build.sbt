@@ -14,7 +14,7 @@ lazy val cats = project.in(file("cats"))
   .settings(
     name := "data-maybe-cats",
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "cats-core" % "1.6.0"
+      "org.typelevel" %% "cats-core" % "1.6.1"
     )
   ).dependsOn(core)
 
